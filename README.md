@@ -1,6 +1,6 @@
 # event_pool
 
-## 基本介绍
+## 基本介绍：
 
 a header-only event-driven library based on c++11，which uses std::promise/std::future asyn-model.
 
