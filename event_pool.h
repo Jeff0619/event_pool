@@ -13,8 +13,8 @@
 
  /*
  *基本介绍
- * a header-only event-driven library based on c++11，which uses std::promise/std::future asyn-model.
- *一个基于c++11标准，仅需要头文件的事件驱动库:)，使用std::promise/std::future异步模型实现。
+ * a header-only event-driven library based on c++11.
+ *一个基于c++11标准，仅需要头文件的事件驱动库:)。
  * 使用方法：
  * 1. 创建event_pool对象并申请一个线程做事件处理，在该线程中调用run函数。
  *  ************************************************
