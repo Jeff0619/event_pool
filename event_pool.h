@@ -212,6 +212,7 @@ public:
         std::unique_lock<std::mutex> mut(mut_);
         h->event_ = shared_from_this();
         handles_.push_back(h);
+        return;
     }
 
     void push_timer(std::shared_ptr<time_handle> h) {
@@ -222,6 +223,7 @@ public:
         //no matter which type of h,we always use time_point_ data member.
         timers_.push(h);
         at_least_one_wake_up_.notify_all();
+        return;
     }
 
     void stop() {
@@ -247,6 +249,7 @@ public:
 };
 
 //对于once的event来说，只能被唤醒一次，但wake_up函数可多次调用（线程安全）
+inline
 void event_handle::wake_up() {
     std::shared_ptr<event_pool> hold = event_.lock();
     if (!hold) {
@@ -273,6 +276,5 @@ void event_handle::wake_up() {
     }// esle type_ == type::every, and trigger_ always remain false,so event_ will never delete it.
     hold->at_least_one_wake_up_.notify_all();
 }
-
 
 #endif // EVENT_POOL_H
